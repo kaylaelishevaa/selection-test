@@ -11,13 +11,15 @@ import {
 
 export default function Home() {
   const defaultDominoes = [
-    [6,1], 
-    [4,3], 
-    [5,1], 
-    [3,4], 
-    [1,1],
-    [3,4], 
-    [1,2]
+    [6, 1],
+    [4, 3],
+    [5, 1],
+    [1, 5],
+    [3, 4],
+    [1, 1],
+    [3, 4],
+    [2, 2],
+    [1, 2],
   ];
 
   const [dominoes, setDominoes] = useState(defaultDominoes);
@@ -59,6 +61,8 @@ export default function Home() {
     setRemoveTotal("");
   };
 
+  
+
   return (
     <div className="max-w-2xl p-8 mx-auto">
       <h1 className="text-2xl font-bold mb-4">Dominoes</h1>
@@ -94,34 +98,19 @@ export default function Home() {
       </div>
 
       <div className="flex flex-wrap gap-2 mb-6">
-        <button
-          onClick={handleSortAsc}
-          className="bg-blue-400 text-white px-3 py-1 rounded"
-        >
+        <button onClick={handleSortAsc} className="bg-blue-400 text-white px-3 py-1 rounded">
           Sort (ASC)
         </button>
-        <button
-          onClick={handleSortDesc}
-          className="bg-blue-400 text-white px-3 py-1 rounded"
-        >
+        <button onClick={handleSortDesc} className="bg-blue-400 text-white px-3 py-1 rounded">
           Sort (DESC)
         </button>
-        <button
-          onClick={handleFlip}
-          className="bg-blue-400 text-white px-3 py-1 rounded"
-        >
+        <button onClick={handleFlip} className="bg-blue-400 text-white px-3 py-1 rounded">
           Flip
         </button>
-        <button
-          onClick={handleRemoveDup}
-          className="bg-blue-400 text-white px-3 py-1 rounded"
-        >
+        <button onClick={handleRemoveDup} className="bg-blue-400 text-white px-3 py-1 rounded">
           Remove Duplicates
         </button>
-        <button
-          onClick={handleReset}
-          className="bg-blue-400 text-white px-3 py-1 rounded"
-        >
+        <button onClick={handleReset} className="bg-blue-400 text-white px-3 py-1 rounded">
           Reset
         </button>
       </div>
@@ -134,126 +123,10 @@ export default function Home() {
           onChange={(e) => setRemoveTotal(e.target.value)}
           className="border border-gray-600 px-2 py-1 rounded w-full"
         />
-        <button onClick={handleRemoveByTotal} className="bg-blue-400 text-white px-3 py-1 rounded self-start">Remove</button>
+        <button onClick={handleRemoveByTotal} className="bg-blue-400 text-white px-3 py-1 rounded self-start">
+          Remove
+        </button>
       </div>
     </div>
   );
-
-  //   // State
-  //   const [dominoes, setDominoes] = useState(defaultDominoes);
-  //   const [removeTotal, setRemoveTotal] = useState("");
-
-  //   // Hitung Double
-  //   const doubleCount = countDoubleNumber(dominoes);
-
-  //   // Sort Asc
-  //   const handleSortAsc = () => {
-  //     const sorted = sortDominoes(dominoes, "asc");
-  //     setDominoes(sorted);
-  //   };
-
-  //   // Sort Desc
-  //   const handleSortDesc = () => {
-  //     const sorted = sortDominoes(dominoes, "desc");
-  //     setDominoes(sorted);
-  //   };
-
-  //   // Flip
-  //   const handleFlip = () => {
-  //     const flipped = flipDominoes(dominoes);
-  //     setDominoes(flipped);
-  //   };
-
-  //   // Remove Duplicates
-  //   const handleRemoveDup = () => {
-  //     const noDupes = removeDuplicates(dominoes);
-  //     setDominoes(noDupes);
-  //   };
-
-  //   // Remove by total
-  //   const handleRemoveByTotal = () => {
-  //     const total = parseInt(removeTotal, 10);
-  //     if (!isNaN(total)) {
-  //       const filtered = removeCardsWithTotal(dominoes, total);
-  //       setDominoes(filtered);
-  //     }
-  //     setRemoveTotal("");
-  //   };
-
-  //   // Reset
-  //   const handleReset = () => {
-  //     setDominoes(defaultDominoes);
-  //     setRemoveTotal("");
-  //   };
-
-  //   return (
-  //     <div className="max-w-2xl mx-auto p-4">
-  //       {/* Judul */}
-  //       <h1 className="text-2xl font-bold text-center mb-4">Dominoes</h1>
-
-  //       {/* Source Data */}
-  //       <div className="border rounded p-4 mb-4">
-  //         <strong>Source</strong>
-  //         <pre className="text-sm text-gray-600 break-words whitespace-pre-wrap">
-  //           {JSON.stringify(dominoes, null, undefined)}
-  //         </pre>
-  //       </div>
-
-  //       {/* Double Number */}
-  //       <div className="border rounded p-4 mb-4">
-  //         <strong>Double Numbers: </strong> {doubleCount}
-  //       </div>
-
-  //       {/* Display Dominoes */}
-  //       <div className="flex flex-wrap gap-2 mb-4">
-  //         {dominoes.map((domino, idx) => {
-  //           const [left, right] = domino;
-  //           return (
-  //             <div
-  //               key={idx}
-  //               className="border px-3 py-2 rounded min-w-[40px] text-center"
-  //             >
-  //               <span className="font-bold">{left} - {right}</span>
-  //             </div>
-  //           );
-  //         })}
-  //       </div>
-
-  //       {/* Row of Buttons */}
-  //       <div className="flex flex-wrap gap-2 mb-4">
-  //         <button onClick={handleSortAsc} className="bg-blue-500 text-white px-3 py-1 rounded">
-  //           Sort (ASC)
-  //         </button>
-  //         <button onClick={handleSortDesc} className="bg-blue-500 text-white px-3 py-1 rounded">
-  //           Sort (DESC)
-  //         </button>
-  //         <button onClick={handleFlip} className="bg-green-500 text-white px-3 py-1 rounded">
-  //           Flip
-  //         </button>
-  //         <button onClick={handleRemoveDup} className="bg-red-500 text-white px-3 py-1 rounded">
-  //           Remove Dup
-  //         </button>
-  //         <button onClick={handleReset} className="bg-gray-500 text-white px-3 py-1 rounded">
-  //           Reset
-  //         </button>
-  //       </div>
-
-  //       {/* Remove by total input */}
-  //       <div className="flex gap-2">
-  //         <input
-  //           type="number"
-  //           placeholder="Input total (misal: 4)"
-  //           value={removeTotal}
-  //           onChange={(e) => setRemoveTotal(e.target.value)}
-  //           className="border rounded px-2 py-1 w-full max-w-[150px]"
-  //         />
-  //         <button
-  //           onClick={handleRemoveByTotal}
-  //           className="bg-orange-500 text-white px-3 py-1 rounded"
-  //         >
-  //           Remove
-  //         </button>
-  //       </div>
-  //     </div>
-  //   );
 }
